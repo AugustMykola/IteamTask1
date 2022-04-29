@@ -17,20 +17,19 @@ export class LoginComponentComponent implements OnInit {
       private router: Router
   ) {
   this._createForm()
-
   }
 
   ngOnInit(): void{}
 
   private _createForm(){
     this.loginForm = new FormGroup({
-      email: new FormControl('',[Validators.required ]),
-      password: new FormControl('',[Validators.required ])
+      email: new FormControl('',[Validators.required, Validators.email]),
+      password: new FormControl('',[Validators.required , this.checkForLength])
     })
   }
 
   checkForLength(control: FormControl){
-      if(control.value.length <= 8){
+      if(control.value.length <= 4){
         return {
           'lengthError':true
         };

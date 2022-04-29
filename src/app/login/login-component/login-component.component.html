@@ -1,18 +1,25 @@
 <div class="login-wrapper">
   <form [formGroup] = 'loginForm' class="login-form">
     <h2 class="login-form__title">
-      SIgn In
+      Sign In
     </h2>
-
     <div class="login-form__body">
       <div class="login-form__item">
         <label for="email">Email</label>
         <input type="email" id='email' formControlName='email'>
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          <p class="error"  *ngIf="loginForm.get('email')?.errors?.['email']"> Введите корректный E-mail </p>
+          <p class="error"  *ngIf="loginForm.get('email')?.errors?.['required']">Поле должно быть обязательно заполненное </p>
+        </div>
       </div>
 
       <div class="login-form__item">
         <label for="password">Password</label>
         <input type="password" id='password' formControlName='password'>
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          <p class="error" *ngIf="loginForm.get('password')?.errors?.['required']">Поле должно быть обязательно заполненное </p>
+          <p class="error" *ngIf="loginForm.get('password')?.errors?.['lengthError']">Пароль должен быть более 4-х символов </p>
+        </div>
       </div>
     </div>
 
@@ -23,5 +30,4 @@
     >
       Sign In</button>
   </form>
-
 </div>
