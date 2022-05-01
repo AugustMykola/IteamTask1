@@ -1,0 +1,53 @@
+<mat-toolbar color= "primary" class= "navbar">
+  <div>
+    <span  class="navbar__item">
+         Api Documentation
+    </span>
+  </div>
+  <div class="navbar__tools">
+    <div>
+    <span (click)="navigateToAssessmentsPage()" class="navbar__item">
+         Back to Assessments
+    </span>
+    </div>
+    <div class="navbar__item">
+    <span (click)="donwload()"  id="downloader" >
+      Download The Table
+    </span>
+    </div>
+    <div>
+    <span (click)="navigateToLoginPage()" class="navbar__item">
+         Logout
+    </span>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="admin-container">
+  <div class="admin-container__title" (click)="showTable()" >
+    <h2 *ngIf="!tableVision; else tableTitleShow " >Users table <span>▼</span></h2>
+    <ng-template #tableTitleShow>
+      <h2>Users table <span>▲</span></h2>
+    </ng-template>
+  </div>
+  <table *ngIf="tableVision" class="admin-container__table">
+    <thead class="admin-container__table-header">
+    <tr>
+      <th>First Name</th>
+      <th>last Name</th>
+      <th>Email</th>
+      <th>Groups</th>
+    </tr>
+    </thead>
+    <tbody class="admin-container__table-body">
+    <tr  *ngFor="let item of adminData$ | async">
+      <td> {{item.first_name | json}}</td>
+      <td> {{item.last_name | json}}</td>
+      <td> {{item.email | json}}</td>
+      <caption *ngFor =" let value of item.groups"> {{value | json}}</caption>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+

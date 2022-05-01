@@ -5,9 +5,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
-import { HttpTokenInterceptor } from './interceptors/token.interceptor';
-import {RoleUserModuleModule} from "./roleUser/roleUser.module";
+import { AuthorizationModule } from './authorization/authorization.module';
+import { HttpTokenInterceptor } from './core/interceptors/token.interceptor';
+import { PagesModule } from './pages/pages.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -19,8 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    LoginModule,
-    RoleUserModuleModule,
+    AuthorizationModule,
+    PagesModule,
     BrowserAnimationsModule
   ],
   providers: [

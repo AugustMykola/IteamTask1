@@ -1,0 +1,23 @@
+<mat-toolbar color= "primary" class= "navbar">
+  <div>
+        <span  class="navbar__item">
+         Api Documentation
+    </span>
+  </div>
+
+  <div class="navbar__tools">
+    <div>
+    <span (click)="navigateToLoginPage()" class="navbar__item">
+         Logout
+    </span>
+    </div>
+  </div>
+</mat-toolbar>
+<div class="chartBlock">
+  <canvas id="graphsChart"></canvas>
+  <div id="assessments-navigator">
+    <button mat-raised-button  color="primary" (click)="navigateToAssessmentsPage()" >
+         Back to Assessments
+    </button>
+  </div>
+</div>
